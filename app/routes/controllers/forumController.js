@@ -40,7 +40,7 @@ var forumPosts = {
 };
 
 var createPost = function(req, res){
-    new Post({
+    new forumPost({
         title: req.body.blogTitle,
         post: req.body.postBody,
         date: {
@@ -48,7 +48,8 @@ var createPost = function(req, res){
             day: today().day,
             year: today().year
         },
-        user: req.user.username
+        user: req.user.username,
+        comments: []
     }).save(function(err){
         if(err){
             console.log(err);
@@ -58,7 +59,7 @@ var createPost = function(req, res){
     });
 }
 
-function updateBlogPost(req, res){
+function updateForumPost(req, res){
     Post.update({"_id":req.query.id}, {$set: {"post": req.body.postBody, "title": req.body.blogTitle}}, function(err, doc){
         console.log(doc);
         if(err){
@@ -69,9 +70,11 @@ function updateBlogPost(req, res){
     });
 }
 
+function createComment(req, res){
+    
+}
 
-
-function deleteBlogPost(req, res){
+function deleteForumPost(req, res){
     Post.remove({"_id": req.query.post}, function(err, post){
         if(err){
             console.log(err);
@@ -82,8 +85,8 @@ function deleteBlogPost(req, res){
 }
 
 exports.create = createPost;
-exports.update = updateBlogPost;
-exports.delete = deleteBlogPost;
+exports.update = updateForumPost;
+exports.delete = deleteFormPost;
 
-exports.createPage = blogPages.create;
-exports.updatePage = blogPages.update;
+exports.createPage = forumPost.create;
+exports.updatePage = forumPost.update;

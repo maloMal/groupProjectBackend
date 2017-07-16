@@ -17,3 +17,6 @@ function updateHighScore(req, res){
         }
     });
 }
+
+
+exports.updateHighScore = updateHighSchool;
