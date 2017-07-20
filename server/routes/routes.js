@@ -9,8 +9,5 @@ var controllers = {
 module.exports = function(app, passport){
 //    app.put(r.updateHighScore, controllers.score.updateHighScore);
     app.get(r.home, controllers.pages.home);
-    app.post(r.getscore, controllers.score.getScore);
-
-        
-    
+    app.post(r.getscore, controllers.score.getScore);        
 }

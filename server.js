@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 ////auth(passport);
-routes(app, passport);
+//routes(app, passport);
 
 //localAuth(passport);
 mongoose.connect("mongodb://localhost/user");

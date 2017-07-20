@@ -1,6 +1,6 @@
 // Define the `assApp` module
-var myApp = angular.module('assApp', []);
-var player = require("../../server/models/player");
+var myApp = angular.module('assApp');
+
 var listOfLeaders = {
     "BestPlayer1" : 0,
     "BestPlayer2" : 0,
@@ -15,8 +15,11 @@ var listOfLeaders = {
 };
 
 myApp.controller('LeaderController', ['$scope', function($scope){
-    for(var i = player.dataSize(); i < 10; i++){
-        player.find({}{"highscore" })
+    for(var key in listOfLeaders){
+        var testPlayer = player.find({}{'highscore'});
+        if(player.find({}{"highscore"}) > listOfLeaders[key]){
+            listOfLeaders[key] = testPlayer
+        }
     }
     $scope.leaders = list0fLeaders; //use scoreController to add top 10 leaders here
 }]);
