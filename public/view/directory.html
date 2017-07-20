@@ -1,0 +1,18 @@
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Thread</th>
+				<th>Author</th>
+				<th>Date</th>
+			<tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="list in questionList">
+				<td>{{list.topic}}</td>
+				<td>{{list.queston}}</td>
+				<td>{{list.date}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

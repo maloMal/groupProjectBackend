@@ -86,7 +86,7 @@ function deleteForumPost(req, res){
 
 exports.create = createPost;
 exports.update = updateForumPost;
-exports.delete = deleteFormPost;
+exports.delete = deleteForumPost;
 
-exports.createPage = forumPost.create;
-exports.updatePage = forumPost.update;
+exports.createPage = forumPosts.create;
+exports.updatePage = forumPosts.update;

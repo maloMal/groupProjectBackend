@@ -7,6 +7,13 @@ var player = require("../../models/player.js");
 //    }
 //}
 
+//get a single player's score
+function getScore(req, res){
+    player.findOne({username: req}, {highScore: 1});
+    res.redirect("/leader");
+}
+
+//updates a specific player's high score. 
 function updateHighScore(req, res){
     player.findAndUpdateById(req.query.id, { $set: {"highScore": req.body.highScore}}, function(err, doc){
         console.log(doc);
@@ -18,5 +25,5 @@ function updateHighScore(req, res){
     });
 }
 
-
-exports.updateHighScore = updateHighSchool;
+exports.getScore = getScore; 
+exports.updateHighScore = updateHighScore;

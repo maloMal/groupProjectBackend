@@ -6,11 +6,11 @@ var express = require("express"),
     passport = require("passport"),
 //    auth = require("./app/auth/passport-local"),
 //    bcrypt = require("bcrypt-nodejs"),
-    player = require("./app/models/player"),
-    Post = require("./app/models/forumPost"),
+    player = require("./server/models/player"),
+    Post = require("./server/models/forumPost"),
     session = require("express-session"),
     methodOverride = require("method-override"),
-    route = require("./app/routes/routes"),
+    routes = require("./server/routes/routes"),
     app = express();
 
 app.use(bodyParser.json());
@@ -18,9 +18,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use("/static", express.static(path.join(__dirname, "app/client")));
-app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "app/views"))
+app.use(express.static(path.join(__dirname, "public")));
+//app.set("view engine", "html");
+//app.set("views", path.join(__dirname, "app/views"));
 
 app.use(session({
     secret: 'issaSecret',
@@ -34,9 +34,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 ////auth(passport);
-//route(app, passport);
+routes(app, passport);
 
 //localAuth(passport);
-mongoose.connect(process.env.DB_URL);
-app.listen(process.env.PORT || 8080);
-//routes(app);
+mongoose.connect("mongodb://localhost/user");
+app.listen(8080);
+routes(app);
